@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Bryan Lewis - Assessment SDE</title>
+
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        .important {
+            margin: 0 auto;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: lightgreen;
+            padding: 0.5rem 0;
+        }
+
+        #john {
+            width: 300px;
+            padding: 1.5rem 2.0rem;
+            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+        }
+
+        .shape {
+            border-radius: 30px;
+        }
+
+        .inputdiv {
+            text-align: center;
+        }
+
+            .inputdiv > input {
+                text-align: left;
+            }
+
+        input {
+            height: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            text-align: center;
+            margin-right: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="john">
+        <label style="display:block;" for="name">Name</label>
+        <div class="inputdiv">
+            <input id="name" type="text" />
+        </div>
+        <div class="important">Class - Important</div>
+        <div class="important">Class - Important</div>
+        <div class="important">Class - Important</div>
+    </div>
+
+    <script type="text/javascript">
+
+        const name = document.getElementById('name');
+
+        name.addEventListener('focus', (event) => {
+            event.stopPropagation();
+            event.target.style.background = 'aqua';
+        });
+
+        name.addEventListener('focus', (event) => {
+            let child = document.getElementsByClassName('important');
+            for (let elements of child) {
+                elements.classList.add('shape');
+                elements.innerText = "Class - Important along with Shape";
+            }
+        });
+
+        name.addEventListener('blur', (event) => {
+            event.stopPropagation();
+            event.target.style.background = '';
+        });
+
+        name.addEventListener('blur', (event) => {
+            let child = document.getElementsByClassName('important');
+            for (let elements of child) {
+                elements.classList.remove('shape');
+                elements.innerText = "Class - Important";
+            }
+        });
+    </script>
+</body>
+</html>
